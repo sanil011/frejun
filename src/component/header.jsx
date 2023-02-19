@@ -10,7 +10,7 @@ const header = () => {
         setLoading(true);
         signOut(auth).then(() => {
             <Navigate to="/" />
-            location.reload();
+            window.location.reload();
             setLoading(false);
         }).catch((error) => {
             setLoading(false);
