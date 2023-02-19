@@ -1,15 +1,16 @@
 import React from 'react'
 import { auth } from "../firebase"
 import { signOut } from "firebase/auth";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Typography, Button,Stack ,Box} from '@mui/material'
 import {useGlobalContext} from "../context/AuthContext"
 const header = () => {
     const { setLoading } = useGlobalContext();
+    const navigate = useNavigate();
     const handleSignout = () => {
         setLoading(true);
         signOut(auth).then(() => {
-            <Navigate to="/" />
+            navigate("/");
             window.location.reload();
             setLoading(false);
         }).catch((error) => {
